@@ -1,18 +1,10 @@
 require_relative '../item.rb'
+require_relative '../quality/exclusive.rb';
 
 class ExclusiveItem < Item
-  TYPE = TYPE_UPGRADABLE
 
-  def update_quality()
-    expiry_days() <= 0 ? @quality.full_degrade() : super
-  end
-
-  def quality_factor()
-    factor = 1
-
-    factor = 2 if expiry_days() <= 10
-    factor = 3 if expiry_days() <= 5
-
-    factor
+  def initialize(name, expiry_days, quality)
+    super
+    @quality = Quality::Exclusive.new(quality)
   end
 end

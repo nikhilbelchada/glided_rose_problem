@@ -1,5 +1,9 @@
 require_relative '../item.rb'
+require_relative '../quality/upgradable.rb';
 
 class UpgradableItem < Item
-  TYPE = TYPE_UPGRADABLE
+  def initialize(name, expiry_days, quality)
+    super
+    @quality = Quality::Upgradable.new(quality)
+  end
 end

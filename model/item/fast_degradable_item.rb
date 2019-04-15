@@ -1,14 +1,9 @@
 require_relative '../item.rb'
+require_relative '../quality/fast_degradable.rb';
 
 class FastDegradableItem < Item
-  TYPE = TYPE_DEGRADABLE
-
-  def quality_factor()
-    factor = 2
-
-    factor *= 2 if expiry_days() <= 0
-
-    factor
+  def initialize(name, expiry_days, quality)
+    super
+    @quality = Quality::FastDegradable.new(quality)
   end
-
 end
